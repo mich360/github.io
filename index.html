@@ -12,8 +12,125 @@
     rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <title></title>
  <!-- <base href="" target="_self">-->  
+ <style> 
+    html {
+        font-size: 98%;/*元112.5%*/
+        font-size: clamp(
+            100%,
+            (100vw - 640px) * 0.004 + 100%,
+            125%
+        );
+    }
+    body{margin-left: 15px;}
+    div{
+    margin: 10px 10px 10px;} 
+    /* width: 680px; */
+p,
+dt {
+font-weight: bold;
+}
+
+dl,
+dd {
+font-size: 0.9rem;
+}
+
+dd {
+margin-bottom: 1em;
+}
+</style>
 </head>
-<body> 
- <p>リポジトリー名を「　github.io 」にしてGithub Desktop 初めて利用してを開いてきました。</p>
-</body>
+<body>
+    <header>
+        <nav>
+        <a href="# 2">コマンドを調べる</a> |	
+        <a href="https://github.com/mich360?tab=repositories" target="_blank">GitHub-mich360</a>  |
+        <a href="https://mich360.github.io/hamburger.github.io/" target="_blank">hamburger.github.io</a> |
+        <a href="https://mich360.github.io/cssgrid/grid.html" target="_blank">CSS-Grid</a>  |
+        <a href="https://mich360.github.io/cssgrid/" target="_blank">Grid-2</a> |
+        <a href="https://mich360.github.io/tableset.github.io/" target="_blank">-</a> |
+        
+        </nav>
+	
+    </header>
+    <h1>GitHub・編集・変更・保存</h1>
+    <div> 
+    <h2>1. リポジトリを取得する</h2>
+    GitHubにアクセス
+    <p>GitHubでプロジェクトページ（例: https://github.com/mich360/my-laravel-docker1）を開きます。</p>
+    
+    リポジトリのクローンURLをコピー
+    
+    ページの上部にある緑色の「Code」ボタンをクリック。
+    「HTTPS」を選択し、リンクをコピー（例: https://github.com/mich360/my-laravel-docker1.git）。
+    <h2>2. リポジトリをローカルにクローンする</h2>
+    <dl>
+    ターミナルを開く
+    Macの場合、Command + Space で「Terminal」を検索して開きます。
+    
+    リポジトリを保存するフォルダに移動
+    
+   <dt>cd ~/Desktop</dt><dd></dd>
+   <dd>リポジトリをクローン</dd>
+   <dt>git clone https://github.com/mich360/my-laravel-docker1.git</dt><dd></dd>
+   <dd>クローンしたフォルダに移動</dd><dt>cd my-laravel-docker1</dt>
+</dl>
+    <h2>3. Visual Studio Codeで編集する</h2>
+    <dl>
+    <dt>VS Codeを開く</dt>
+    <dt>ターミナルで以下を実行して、プロジェクトをVS Codeで開きます：  </dt>
+    <dd><pre>
+    code .
+</pre>
+    </dd>
+    <dd>※「code が見つからない」と表示された場合は、VS Codeのコマンドラインツールをインストールしてください。</dd>
+    
+    <dd>編集するファイルを探す</dd>
+    <dd>左側のエクスプローラーで編集したいファイル（例: docker-compose.yml や .env）をクリックします。</dd>
+    
+    <dd>ファイルを編集</dd>
+    
+    <dd>必要な変更を行います（例: ポート番号を変更、設定を追加など）。</dd>
+    <dd>保存する</dd>
+    
+    <dd>Command + S で変更を保存します。</dd>
+</dl>
+    <h2>4. Gitを使って変更を保存する</h2>
+    変更内容を確認
+    ターミナルで以下を実行し、編集内容を確認します：
+    
+    <pre><code>
+    git status
+</code></pre>
+    変更をステージング
+    編集したファイルをGitに登録します：
+    
+    <pre><code>
+    git add .
+</code></pre>
+    変更をコミット
+    変更内容にメッセージをつけてコミットします：
+    
+    <pre><code>
+    git commit -m "Updated Docker settings"
+</code></pre>
+    変更をGitHubにプッシュ
+    編集内容をGitHubに送信します：
+    
+    <pre><code>
+    git push origin main
+</code></pre>
+    ※main がデフォルトブランチ名です。main でない場合、適切なブランチ名を使用してください。
+    
+    <h2>5. GitHubで確認する</h2>
+    GitHubのリポジトリページを開きます。<br>
+    プロジェクトページで変更内容が反映されていることを確認します。<br>
+    まとめ：よくあるポイント<br>
+    エラーが出た場合:<br>
+    Gitのエラーメッセージをコピーして検索すれば、ほとんどの解決方法が見つかります。<br>
+    別ブランチで作業する場合:<br>
+    上記の git checkout -b feature/new-feature を最初に実行してから作業を始めます。<br>
+    
+
+    </div></body>
 </html>
