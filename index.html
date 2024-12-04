@@ -50,15 +50,13 @@ margin-bottom: 1em;
 <body>
     <header>
         <nav>
-        <a href="# 2">コマンドを調べる</a> |	
-        <a href="https://github.com/mich360?tab=repositories" target="_blank">GitHub-mich360</a>  |
-        <a href="https://mich360.github.io/hamburger.github.io/" target="_blank">hamburger.github.io</a> |
-        <a href="https://mich360.github.io/cssgrid/grid.html" target="_blank">CSS-Grid</a>  |
-        <a href="https://mich360.github.io/cssgrid/" target="_blank">Grid-2</a> |
-        <a href="https://mich360.github.io/tableset.github.io/" target="_blank">-</a> |
-        
-        </nav>
-	
+        <a href="#branch">別ブランチで作業</a> |	
+        <a href="" target="_blank"></a>  |
+        <a href="" target="_blank"></a> |
+        <a href="" target="_blank"></a>  |
+        <a href="" target="_blank"></a> |
+        <a href="" target="_blank"></a> |
+    </nav>
     </header>
     <h1>GitHub・編集・変更・保存</h1>
     <a href="#branch">安全に別ブランチで作業手順</a>
@@ -240,6 +238,7 @@ git push origin feature/add-login
 Pull Request（プルリクエスト）を作成して、他の開発者にレビューを依頼します。レビュー後、メインブランチに統合します。
 
 <h2>5. メリットと注意点</h2>
+<pre>
 メリット
 作業が整理される。
 メインブランチが常に安定している。
@@ -248,10 +247,16 @@ Pull Request（プルリクエスト）を作成して、他の開発者にレ�
 ブランチ名は分かりやすくする
 例: feature/新しい機能, bugfix/バグ修正.
 作業の途中で他のブランチを更新した場合、変更を取り込む必要がある：
-<code><pre>
+<code>
 
 git pull origin main
-</pre></code>
+</code>
+コミットメッセージを使うと、後から履歴を追いやすくなります。
+例:
+Updated Docker settings to fix database connection issue
+Refactored index.html layout for responsive design
+
+</pre>
 </div>
 </body>
 </html>
