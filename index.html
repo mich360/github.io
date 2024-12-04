@@ -21,11 +21,18 @@
             125%
         );
     }
-    body{margin-left: 15px;}
+    body{margin-left: 50px;}
     div{
-    margin: 10px 10px 10px;} 
+            max-width: 950px;
+            margin-left: auto;
+            margin-right: auto;
+            border: 1px solid white;
+            padding-top: 3em;
+            padding-bottom: 3em;
+
+    /* margin: 10px 10px 10px; */
     /* width: 680px; */
-p,
+p,} 
 dt {
 font-weight: bold;
 }
@@ -54,6 +61,7 @@ margin-bottom: 1em;
 	
     </header>
     <h1>GitHub・編集・変更・保存</h1>
+    <a href="#branch">安全に別ブランチで作業手順</a>
     <div> 
     <h2>1. リポジトリを取得する</h2>
     GitHubにアクセス
@@ -132,5 +140,118 @@ margin-bottom: 1em;
     上記の git checkout -b feature/new-feature を最初に実行してから作業を始めます。<br>
     
 
-    </div></body>
+    </div>
+    <h2>別ブランチで作業 <code>git checkout -b feature/new-feature</code></h2>
+    <a id="branch"></a>
+    <div>
+    <h2>1. ブランチとは</h2>
+ブランチ（branch）は、プロジェクトの異なる「作業ライン」を作る仕組みです。
+
+メインブランチ（通常mainやmaster）
+プロジェクトの「完成形」や「安定版」が保存されています。
+
+別ブランチ
+新しい機能や修正を追加するための一時的な作業スペースです。
+
+<h2>2. なぜ別ブランチを使うのか</h2>
+安定性を保つため
+メインブランチを直接編集すると、動作に影響を与えるバグや未完成の変更が混ざる可能性があります。別ブランチで作業することで、安定版を保ちながら変更を試せるようになります。
+
+複数人での作業に便利
+チーム開発では、各メンバーがそれぞれ別のブランチで作業します。これにより、作業内容が干渉しないようになります。
+
+変更内容の管理が容易
+ブランチごとにどんな作業を行ったかが記録されるので、どの変更がどのブランチで行われたかを追跡できます。
+
+<h2>3. 実際の使用例</h2>
+<b>ケース1</b>: 新しい機能を追加する
+メインブランチを確認する
+現在のブランチを確認：
+<code><pre>
+
+   git branch
+
+出力例:
+css
+    * main
+
+</pre></code>
+
+新しいブランチを作成して切り替える
+新しいブランチfeature/add-loginを作成：
+<small>git checkout -b feature/new-featureと同じこと現在のブランチから新しいブランチを作成し、そのブランチに切り替えます。</small>
+<code><pre>
+
+    git checkout -b feature/add-login
+   
+
+
+出力例:
+   Switched to a new branch 'feature/add-login'
+
+</pre></code> 
+
+作業を進める
+feature/add-loginブランチでログイン機能を追加します。
+
+完成したらメインブランチに統合する
+作業が完了したらメインブランチに戻り、変更をマージ：
+
+<code><pre>
+
+git checkout main
+git merge feature/add-login
+
+</pre></code>
+<b>ケース2</b>: 複数の変更を並行して進める
+例: Docker設定の更新とAPI機能追加を同時進行。
+Dockerの作業用ブランチ：
+<code><pre>
+
+git checkout -b feature/update-docker
+</pre></code>
+API追加の作業用ブランチ：
+<code><pre>
+    
+git checkout -b feature/add-api
+</pre></code>
+それぞれのブランチで独立して作業を進められるため、混乱が避けられます。
+
+<h2>4. ブランチ作業の流れ</h2>
+新しいブランチを作成
+必ずgit checkout -bでブランチを切り替えます。
+
+作業を進める
+編集→保存→Gitでコミット：
+<code><pre>
+
+git add .
+git commit -m "Added login functionality"
+
+</pre></code>
+リモートにプッシュする
+作業内容をリモートリポジトリに送信：
+
+<code><pre>
+
+git push origin feature/add-login
+</pre></code>
+変更をレビュー＆マージする
+Pull Request（プルリクエスト）を作成して、他の開発者にレビューを依頼します。レビュー後、メインブランチに統合します。
+
+<h2>5. メリットと注意点</h2>
+メリット
+作業が整理される。
+メインブランチが常に安定している。
+問題が発生した場合、ブランチ単位で修正が可能。
+注意点
+ブランチ名は分かりやすくする
+例: feature/新しい機能, bugfix/バグ修正.
+作業の途中で他のブランチを更新した場合、変更を取り込む必要がある：
+<code><pre>
+
+git pull origin main
+</pre></code>
+</div>
+</body>
 </html>
