@@ -273,5 +273,50 @@ Refactored index.html layout for responsive design
         <dd><code>https://mich360.github.io/github.io/</code>&emsp;: URLで確認</dd>
     </dl>
 </div>
+    <h3>Laravel Sail環境を利用したプロジェクトをダウンロードし、Dockerで実行する</h3>
+    <p>環境が揃っているか確認</p>
+    <pre>
+        docker -v
+        docker compose version
+
+        .env ファイルがない場合は、.env.example をコピーして作成
+
+         cp .env.example .env
+    </pre>
+    <p>GitHubからクローン後の手順を間違えない</p>
+    <pre>
+        git clone https://github.com/username/repository.git            クローン
+        cd repository
+
+        chmod -R 777 storage bootstrap/cache                            権限を適切に設定
+
+         cp .env.example .env                                           .env ファイルを作成
+
+        ./vendor/bin/sail composer install                               依存パッケージをインストール
+
+        ./vendor/bin/sail artisan key:generate                           キーを生成
+
+    </pre>
+    <p>Dockerコンテナの起動とマイグレーション</p>
+    <pre>
+         ./vendor/bin/sail up -d                                         起動
+         docker ps　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　確認
+        ./vendor/bin/sail artisan migrate --seed　　　　　　　　　　　　　　　データベースをセットアップ
+
+    </pre>
+    <p>ポートや環境変数の競合</p>
+    <pre>
+         lsof -i :8000      もしポート8000が使われていたら、.env の APP_PORT=8080 に変更し、 docker-compose.yml のポートも合わせる。
+
+    </pre>
+    <p>キャッシュや権限エラーの対処</p>
+    <pre>
+        
+        ./vendor/bin/sail artisan config:clear
+        ./vendor/bin/sail artisan cache:clear
+        ./vendor/bin/sail artisan route:clear
+        ./vendor/bin/sail artisan view:clear
+
+    </pre>
 </body>
 </html>
