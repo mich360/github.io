@@ -273,6 +273,34 @@ Refactored index.html layout for responsive design
         <dd><code>https://mich360.github.io/github.io/</code>&emsp;: URLで確認</dd>
     </dl>
 </div>
+<h2>📌  作業終了後、ブランチを削除</h2>
+✅ マージが完了したら、ブランチを削除して整理：
+<pre><code>
+         git branch -d feature/add-login                    ローカルブランチの削除
+
+         git branch -D feature/add-login                    未マージのブランチを強制削除（注意⚠️）
+
+         git push origin --delete feature/add-login         リモートブランチの削除（GitHub などのリモートリポジトリ）
+         又は　　git push origin :feature/add-login         リモートリポジトリ上の feature/add-login を削除
+
+         git fetch --prune　　　　　　　　　　　　　　　　　削除されたリモートブランチの情報をローカルからも消す（リストを整理）
+
+         <hr>
+
+🔹 これでブランチをきれいに管理
+ローカルブランチ削除 →git branch -d feature/add-login
+リモートブランチ削除 →git push origin --delete feature/add-login
+ローカルのリモート情報を整理 →git fetch --prune
+
+
+🔹 簡単に
+         git branch -d feature-branch
+         git push origin --delete feature-branch
+
+         git fetch --prune
+
+</code></pre>
+</div>
     <h3>Laravel Sail環境を利用したプロジェクトをダウンロードし、Dockerで実行する</h3>
     <p>環境が揃っているか確認</p>
     <pre>
